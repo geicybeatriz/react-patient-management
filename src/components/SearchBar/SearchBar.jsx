@@ -7,7 +7,7 @@ function SearchBar (){
       <SearchIcon>
         <IoMdSearch size={24} color="#136CDC"/>
       </SearchIcon>
-      <SearchInput type="text" placeholder="Pesquisar..."/>
+      <SearchInput type="text" placeholder="Pesquisar"/>
     </SearchContainer>
   )
 }
@@ -15,7 +15,6 @@ function SearchBar (){
 export default SearchBar;
 
 const SearchContainer = styled.div`
-  width: 80%;
   height: 40px;
   padding: 10px 15px;
   display: flex;
