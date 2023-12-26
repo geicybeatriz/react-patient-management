@@ -23,4 +23,9 @@ const TextContent= styled.h1`
   font-size: ${props => props.fontSize || "14px"};
   font-weight: ${props => props.type === "primary" ? "600" : "400"};
   color: ${props => props.color || "#474747"};
+  text-align: center;
+
+  @media (min-width: 992px) {
+    line-height: 21px;
+  }
 `;
