@@ -18,7 +18,6 @@ const Container = styled.div`
   display: flex;
   justify-content:center;
   align-items: center;
-  background-color: #fff;
 
   @media (min-width: 992px){
     width: 230px;
