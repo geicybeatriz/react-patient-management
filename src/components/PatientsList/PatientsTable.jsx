@@ -3,13 +3,8 @@ import styled from "styled-components";
 import Label from "../Label/Label";
 import MenuIcon from "../Menu/MenuIcon";
 
-function PatientsTable(){
+function PatientsTable({ patients, setPatients }){
   const columns = ["Nome", "CPF", "Data de nascimento", "E-mail", "Cidade", "Ações"];
-
-  const patients = [{id: 1, nome: 'João', cpf: '123.456.789-00', dataNascimento: '01/01/1990', email: 'joao@gmail.com', cidade: 'Cidade A'
-  }, {id: 2, nome: 'João', cpf: '123.456.789-00', dataNascimento: '01/01/1990', email: 'joao@gmail.com', cidade: 'Cidade A'
-  }, {id: 3, nome: 'João', cpf: '123.456.789-00', dataNascimento: '01/01/1990', email: 'joao@gmail.com', cidade: 'Cidade A'
-  }];
 
   return (
     <TableContainer>
@@ -31,7 +26,7 @@ function PatientsTable(){
           </TableRow>
         </HeaderTable>
         <tbody>
-          {patients.map((patient, index) => (
+          {patients?.map((patient, index) => (
             <TableRow key={patient.id} isOdd={index % 2 === 0}>
               <Td>
                 <Content>
@@ -55,7 +50,7 @@ function PatientsTable(){
               </Td>
               <Td>
                 <Content>
-                  <Label color="#474747" text={patient.cidade} />
+                  <Label color="#474747" text={patient.address.cidade} />
                 </Content>
               </Td>
               <Td>
@@ -67,7 +62,6 @@ function PatientsTable(){
           ))}
         </tbody>
       </Table>
-      
     </TableContainer>
   )
 }
@@ -76,7 +70,7 @@ export default PatientsTable;
 
 const TableContainer = styled.div`
   width: 100%;
-  height: 530px;
+  height: auto;
   padding: 0px 16.867px;
   border-radius: 0px 0px 5px 5px;
   background-color: #fff; 
