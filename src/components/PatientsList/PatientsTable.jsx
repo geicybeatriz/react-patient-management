@@ -1,10 +1,44 @@
+import { useState } from "react";
 import { RiArrowUpDownFill } from "react-icons/ri";
 import styled from "styled-components";
+import Swal from "sweetalert2";
+import patientsServices from "../../services/patientsServices";
 import Label from "../Label/Label";
 import MenuIcon from "../Menu/MenuIcon";
 
 function PatientsTable({ patients, setPatients }){
+  const [sortState, setSortState] = useState('asc')
   const columns = ["Nome", "CPF", "Data de nascimento", "E-mail", "Cidade", "Ações"];
+
+  function toggleSorting(){
+    if(sortState === 'asc') setSortState('desc');
+    if(sortState === 'desc') setSortState('asc');
+    return sortState;
+  }
+
+  function toggleSearchTerm(term){
+    if(term === "Nome") return "nome";
+    if(term === "CPF") return "cpf";
+    if(term === "Data de nascimento") return "dataNascimento";
+    if(term === "E-mail") return "email";
+    if(term === "Cidade") return "cidade";
+    return "nome";
+  }
+
+  function getSortedData(term){
+    const searchTerm = toggleSearchTerm(term)
+    toggleSorting();
+    const promise = patientsServices.fetchSortedResults(searchTerm, sortState);
+    promise.then(res => setPatients(res.data))
+          .catch(err => {
+            console.log(err);
+            Swal.fire({
+              title: 'Oops...',
+              icon: 'error',
+              text: 'Desculpe, ocorreu um erro interno no servidor.'
+            });
+          });
+  }
 
   return (
     <TableContainer>
@@ -16,8 +50,11 @@ function PatientsTable({ patients, setPatients }){
                 <Th key={column}>
                   <Content>
                     <Label text={column} type="primary" color="#4b4b4b" fontSize="14px"/>
-                    <Icon>
-                      <RiArrowUpDownFill color="#136CDC" size={18}/>
+                    <Icon onClick={() => getSortedData(column)}>
+                      <RiArrowUpDownFill 
+                        color="#136CDC" 
+                        size={18}
+                      />
                     </Icon>
                   </Content>
                 </Th>
@@ -127,4 +164,5 @@ const Icon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 `;

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import Swal from "sweetalert2";
 import patientsServices from "../../services/patientsServices";
+import Label from "../Label/Label";
 import PatientsListHeader from "./PatientsListHeader";
 import PatientsTable from "./PatientsTable";
 
@@ -10,9 +12,12 @@ function PatientsList() {
   function getPatientsData(){
     const promise = patientsServices.getPatientsData();
     promise.then(res => {
-      console.log(res.data);
       setPatients(res.data);
-    }).catch(err => console.log(err));
+    }).catch(_err => Swal.fire({
+      title: 'Oops...',
+      icon: 'error',
+      text: 'Desculpe, ocorreu um erro interno no servidor.'
+    }));
   }
 
   useEffect(() => {
@@ -22,10 +27,21 @@ function PatientsList() {
   return (
     <Container>
       <PatientsListHeader />
-      <PatientsTable 
-        patients={patients} 
-        setPatients={setPatients}
-      />
+      {patients.length !== 0 ? (
+        <PatientsTable 
+          patients={patients} 
+          setPatients={setPatients}
+        />
+      ) : (
+        <Container>
+          <Label 
+            text="Não há pacientes cadastrados no sistema!"
+            type="secondary"
+            color="#000"
+            fontSize={16}
+          />
+        </Container>
+      )}
     </Container>
   )
 }
@@ -36,4 +52,6 @@ const Container = styled.div`
   width: 80%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center
 `;
