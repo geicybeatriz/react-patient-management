@@ -1,12 +1,18 @@
 import styled from "styled-components";
+import AddModal from "../../components/CustomModal/AddModal";
 import Logo from "../../components/Logo/Logo";
 import PatientsList from "../../components/PatientsList/PatientsList";
+import EditModal from "../../components/CustomModal/EditModal";
+import DeleteModal from "../../components/CustomModal/DeleteModal";
 
 function Home(){
   return (
     <Container>
       <Logo/>
       <PatientsList />
+      <AddModal />
+      <EditModal />
+      <DeleteModal />
     </Container>
   )
 }

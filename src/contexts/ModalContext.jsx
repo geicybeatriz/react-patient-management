@@ -34,7 +34,7 @@ const ModalProvider = ({children}) => {
       closeAddModal,
       deleteModalOpen,
       openDeleteModal,
-      closeDeleteModal
+      closeDeleteModal,
     }}>
       {children}
     </ModalContext.Provider>
