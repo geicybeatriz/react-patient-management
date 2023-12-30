@@ -28,7 +28,7 @@ const StyledButton = styled.div`
   border-radius: 4px;
   background-color: ${props => props.backgroundColor};
   box-shadow: 0px 4px 8px 0px rgba(14, 30, 47, 0.03);
-  transition: background-color 0.3s;
+  transition: 0.3s;
 
   &:hover {
     background-color: #2076c8;
