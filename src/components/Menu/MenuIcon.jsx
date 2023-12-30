@@ -22,7 +22,7 @@ function MenuIcon({id}) {
         isOpen={isMenuOpen} 
         onClose={() => setMenuOpen(false)} 
         iconPosition={iconPosition}
-        id
+        id={id}
       />
     </Container>
   );

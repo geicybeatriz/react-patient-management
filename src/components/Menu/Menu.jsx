@@ -1,18 +1,34 @@
 import styled from "styled-components";
+import { useModal } from "../../hooks/useModal";
 
-function Menu({isOpen, iconPosition, onClose}) {
+function Menu({isOpen, iconPosition, onClose, id}) {
+  const { openEditModal, openDeleteModal } = useModal();
+
+  const handleEditModalOpen = (id) => {
+    openEditModal(id);
+    onClose();
+  }
+
+  const handleDeleteModalOpen = (id) => {
+    openDeleteModal(id);
+    onClose();
+  };
 
   return (
     <Container 
-      
       isOpen={isOpen} 
       top={iconPosition.top} 
       left={iconPosition.left} 
+      patientId={id}
     >
       <Div left={iconPosition.left}/>
       <MenuContainer>
-        <MenuOption onClick={onClose}>Editar</MenuOption>
-        <MenuOption onClick={onClose}>Excluir</MenuOption>
+        <MenuOption onClick={() => handleEditModalOpen(id)}>
+          Editar
+        </MenuOption>
+        <MenuOption onClick={() => handleDeleteModalOpen(id)}>
+          Excluir
+        </MenuOption>
       </MenuContainer>
     </Container>
   )
@@ -65,13 +81,11 @@ const Div= styled.div`
 const Container = styled.div`
   position: absolute;
   top: ${props => (props.top) ? `calc(${props.top} + 50px)` : 0};
-  left: ${props => (props.left) ? `calc(${props.left} + 50px)` : 0};
+  right: ${props => (props.left) ? `calc(${props.left} - 150px)` : 0};
 
   height: 87px;
   display: ${props => props.isOpen ? 'flex' : 'none'};
   align-items: center;
   justify-content: center;
   background-color: yellow;
-  
 `;
-
