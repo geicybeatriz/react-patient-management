@@ -26,7 +26,6 @@ function CustomSelect ({id, name, value, onChange}){
           <StyledOptions value="Other">Outro</StyledOptions>
           <StyledOptions value="PreferNotToSay">Prefiro não dizer</StyledOptions>
           </StyledSelect>
-
         </>
       )}
     </StyledContainer>

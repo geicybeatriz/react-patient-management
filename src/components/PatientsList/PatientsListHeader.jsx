@@ -15,6 +15,7 @@ function PatientsListHeader(){
         <SearchBar />
         <ContainerButton onClick={() => openAddModal(true)}>
           <Button 
+            width="157px"
             typeButton="add-patients"
             text="Adicionar paciente"
             backgroundColor="#136CDC"

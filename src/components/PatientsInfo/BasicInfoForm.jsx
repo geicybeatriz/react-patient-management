@@ -21,12 +21,6 @@ function BasicInfoForm(){
 
   console.log(patientData);
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // Aqui você pode adicionar lógica para processar os dados, se necessário
-  //   // Por exemplo, enviar os dados para um servidor ou realizar outras operações
-  // };
-
   return (
     <Container>
       <ContainerPicture>
@@ -38,38 +32,30 @@ function BasicInfoForm(){
         <FormItem>
           <Label color="#656565" text="Paciente"/>
           <CustomInput type="text" id='nome' name='nome' value={patientData.nome} content="Digite" onChange={handlePatientInputChange} />
-
         </FormItem>
         <FormItem>
           <Label color="#656565" text="Apelido"/>
           <CustomInput type="text" id='apelido' name='apelido' value={patientData.apelido} content="Digite" onChange={handlePatientInputChange} />
-
         </FormItem>
         <FormItem>
           <Label color="#656565" text="Nacionalidade"/>
           <CustomInput type="text" id='nacionalidade' name='nacionalidade' value={patientData.nacionalidade} content="Digite" onChange={handlePatientInputChange} />
-
         </FormItem>
         <FormItem>
           <Label color="#656565" text="Nascimento"/>
           <CustomDateInput name='dataNascimento' value={patientData.dataNascimento} content="01/02/22" onChange={handlePatientInputChange} />
-          {/* <CustomInput type="date" id='dataNascimento' name='dataNascimento' value={patientData.dataNascimento} content="01/01/22" onChange={handlePatientInputChange} /> */}
-
         </FormItem>
         <FormItem>
           <Label color="#656565" text="CPF"/>
           <CustomInput type="text" id='cpf' name='cpf' value={patientData.cpf} content="Digite" onChange={handlePatientInputChange} />
-
         </FormItem>
         <FormItem>
           <Label color="#656565" text="RG"/>
           <CustomInput type="text" id='rg' name='rg' value={patientData.rg} content="Digite" onChange={handlePatientInputChange} />
-
         </FormItem>
         <FormItem>
           <Label color="#656565" text="Gênero"/>
           <CustomSelect id="genero" name="genero" value={patientData.genero} onChange={handlePatientInputChange}/>
-
         </FormItem>
         <FormItem>
           <Label color="#656565" text="Estado civil"/>
@@ -95,8 +81,8 @@ const Container = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
-  padding-bottom: 60px;
-  overflow-y: hidden;
+  padding-bottom: 75px;
+  overflow-y: auto;
 `;
 
 const ContainerPicture = styled.div`
