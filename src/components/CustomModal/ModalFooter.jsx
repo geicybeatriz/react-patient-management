@@ -28,11 +28,16 @@ function ModalFooter({selected, setSelected}){
 export default ModalFooter;
 
 const Container = styled.div`
+  position: fixed;
+  bottom: 32px;
+  right: 19px;
+  
   width: 100%;
   height: 32px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  
 `;
 
 const ContainerButton= styled.div`
