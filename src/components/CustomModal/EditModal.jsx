@@ -18,12 +18,11 @@ function EditModal(){
     if(!patientId) return;
     const promise = patientsServices.getPatientDataById(patientId);
     promise.then(res => {
-    console.log(res.data);
-    setPatientData(res.data.patient);
-    setAddressData(res.data.address);
-    localStorage.setItem("addressData", JSON.stringify(addressData));
-    localStorage.setItem("patientData", JSON.stringify(patientData));
-
+      console.log(res.data);
+      setPatientData(res.data.patient);
+      setAddressData(res.data.address);
+      localStorage.setItem("addressData", JSON.stringify(addressData));
+      localStorage.setItem("patientData", JSON.stringify(patientData));
     }).catch(err => Swal.fire({
       icon:'error', text:'O paciente não existe no banco de dados!'
     }));
@@ -35,7 +34,7 @@ function EditModal(){
   },[]);
 
   return (
-    <OverlayModal isOpen={editModalOpen} onClick={closeEditModal}>
+    <OverlayModal isOpen={editModalOpen} onRequestClose={closeEditModal}>
       <ContainerModal >
         <Container>
           <ModalHeader selected={selected} setSelected={setSelected} />
