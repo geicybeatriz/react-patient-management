@@ -111,6 +111,12 @@ const TableContainer = styled.div`
   padding: 0px 16.867px;
   border-radius: 0px 0px 5px 5px;
   background-color: #fff; 
+
+  @media (max-width: 750px) {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+  }
 `;
 
 const Table = styled.table`
@@ -141,6 +147,7 @@ const TableRow = styled.tr`
   border-bottom: 0.5px solid #E8E8E8;
   gap: 16px;
   background-color: ${props => props.isOdd ? "#fcfcfc" : "#fff"};
+
 `;
 
 const Th = styled.th`
