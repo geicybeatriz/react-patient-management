@@ -15,7 +15,6 @@ function EditModal(){
   const {patientData, setPatientData, addressData, setAddressData} = useContext(PatientContext);
 
   function fetchDataById(){
-    if(!patientId) return;
     const promise = patientsServices.getPatientDataById(patientId);
     promise.then(res => {
       console.log(res.data);
@@ -29,8 +28,8 @@ function EditModal(){
   }
   
   useEffect(() => {
+    console.log("rodei");
     fetchDataById();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
   return (
