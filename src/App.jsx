@@ -1,16 +1,19 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home/Home";
 import { ModalProvider } from "./contexts/ModalContext";
+import { PatientProvider } from "./contexts/PatientContext";
+import Home from "./pages/Home/Home";
 
 function App() {
   return (
-    <ModalProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home/>}></Route>
-        </Routes>
-      </BrowserRouter>
-    </ModalProvider>
+    <PatientProvider>
+      <ModalProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home/>}></Route>
+          </Routes>
+        </BrowserRouter>
+      </ModalProvider>
+    </PatientProvider>
   );
 }
 
