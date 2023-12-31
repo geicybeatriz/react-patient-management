@@ -1,18 +1,32 @@
 import styled from "styled-components";
+import { useModal } from "../../hooks/useModal";
 
-function Menu({isOpen, iconPosition, onClose}) {
+function Menu({isOpen, onClose, id}) {
+  const { openEditModal, openDeleteModal } = useModal();
+
+  const handleEditModalOpen = (id) => {
+    openEditModal(id);
+    onClose();
+  }
+
+  const handleDeleteModalOpen = (id) => {
+    openDeleteModal(id);
+    onClose();
+  };
 
   return (
     <Container 
-      
       isOpen={isOpen} 
-      top={iconPosition.top} 
-      left={iconPosition.left} 
+      patientId={id}
     >
-      <Div left={iconPosition.left}/>
+      <Div/>
       <MenuContainer>
-        <MenuOption onClick={onClose}>Editar</MenuOption>
-        <MenuOption onClick={onClose}>Excluir</MenuOption>
+        <MenuOption onClick={() => handleEditModalOpen(id)}>
+          Editar
+        </MenuOption>
+        <MenuOption onClick={() => handleDeleteModalOpen(id)}>
+          Excluir
+        </MenuOption>
       </MenuContainer>
     </Container>
   )
@@ -32,6 +46,11 @@ const MenuContainer = styled.div`
   border-radius: 5px;
   border: 1px solid #E8E8E8;
   box-shadow: 0px 1px 15px 0px rgba(14, 30, 47, 0.03);
+
+  @media (max-width: 600px) {
+    width: 80px;
+    height: 42px;
+  }
 `;
 
 const MenuOption = styled.div`
@@ -57,21 +76,18 @@ const MenuOption = styled.div`
 `;
 
 const Div= styled.div`
-  width: ${props => (props.left) ? `calc(${props.left} + 50px)` : '50px'};
+  width: 50px;
   height: 1px;
   background-color: #ff7a00;
 `;
 
 const Container = styled.div`
   position: absolute;
-  top: ${props => (props.top) ? `calc(${props.top} + 50px)` : 0};
-  left: ${props => (props.left) ? `calc(${props.left} + 50px)` : 0};
+  top: -30px;
+  left: 20px;
 
   height: 87px;
   display: ${props => props.isOpen ? 'flex' : 'none'};
   align-items: center;
   justify-content: center;
-  background-color: yellow;
-  
 `;
-

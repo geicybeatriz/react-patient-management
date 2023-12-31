@@ -5,24 +5,16 @@ import Menu from "./Menu";
 
 function MenuIcon({id}) {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [iconPosition, setIconPosition] = useState({top:0, left:0});
-
-  function handleIconClick(event){
-    const {top, left} = event.target.getBoundingClientRect();
-    setIconPosition({top, left});
-    setMenuOpen(!isMenuOpen);
-  }
 
   return (
     <Container>
-      <ContainerIcon onClick={handleIconClick}>
+      <ContainerIcon onClick={() => setMenuOpen(!isMenuOpen)}>
         <MdMoreHoriz size={24} color="#000"/>
       </ContainerIcon>
       <Menu 
         isOpen={isMenuOpen} 
         onClose={() => setMenuOpen(false)} 
-        iconPosition={iconPosition}
-        id
+        id={id}
       />
     </Container>
   );
@@ -41,6 +33,7 @@ const ContainerIcon = styled.div`
 `;
 
 const Container = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;

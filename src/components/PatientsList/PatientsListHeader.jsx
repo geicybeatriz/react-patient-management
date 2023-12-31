@@ -1,9 +1,11 @@
 import styled from "styled-components";
+import { useModal } from "../../hooks/useModal";
 import Label from "../Label/Label";
 import SearchBar from "../SearchBar/SearchBar";
 import Button from "../UI/Button/Button";
 
 function PatientsListHeader(){
+  const { openAddModal } = useModal();
   return (
     <Container>
       <Content>
@@ -11,12 +13,15 @@ function PatientsListHeader(){
       </Content>
       <FixedContainer>
         <SearchBar />
-        <Button 
-          typeButton="add-patients"
-          text="Adicionar paciente"
-          backgroundColor="#136CDC"
-          color="#fff"
-        />
+        <ContainerButton onClick={() => openAddModal(true)}>
+          <Button 
+            width="157px"
+            typeButton="add-patients"
+            text="Adicionar paciente"
+            backgroundColor="#136CDC"
+            color="#fff"
+          />
+        </ContainerButton>
       </FixedContainer>
     </Container>
   )
@@ -74,4 +79,10 @@ const Content = styled.div`
     width: 40%;
     justify-content: end;
   }
+`;
+
+const ContainerButton = styled.div`
+  display:flex;
+  align-items: center;
+  justify-content: center;
 `;
