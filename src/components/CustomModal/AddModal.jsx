@@ -12,7 +12,7 @@ function AddModal (){
 
   return (
     <OverlayModal>
-      <ContainerModal isOpen={addModalOpen} onClose={closeAddModal}>
+      <ContainerModal isOpen={addModalOpen} onRequestClose={closeAddModal}>
         <Container>
           <ModalHeader selected={selected} setSelected={setSelected}/>
           <ModalContent>

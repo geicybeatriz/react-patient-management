@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 import Swal from "sweetalert2";
 import { PatientContext } from "../../contexts/PatientContext";
@@ -14,8 +14,9 @@ function EditModal(){
   const { editModalOpen, patientId, closeEditModal} = useModal();
   const {patientData, setPatientData, addressData, setAddressData} = useContext(PatientContext);
 
-  function fetchDataById(){
-    const promise = patientsServices.getPatientDataById(patientId);
+  function fetchDataById(id){
+    console.log("rodei");
+    const promise = patientsServices.getPatientDataById(id);
     promise.then(res => {
       console.log(res.data);
       setPatientData(res.data.patient);
@@ -27,10 +28,10 @@ function EditModal(){
     }));
   }
   
-  useEffect(() => {
+  if(patientId){
     console.log("rodei");
-    fetchDataById();
-  },[]);
+    fetchDataById(patientId);
+  }
 
   return (
     <OverlayModal isOpen={editModalOpen} onRequestClose={closeEditModal}>
