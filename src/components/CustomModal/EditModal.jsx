@@ -16,11 +16,8 @@ function EditModal(){
 
   function fetchDataById(id){
     if(!id) console.log(id);
-    console.log("rodei");
     const promise = patientsServices.getPatientDataById(id);
-    console.log(id);
     promise.then(res => {
-      console.log(res.data);
       setPatientData(res.data.patient);
       setAddressData(res.data.address);
       localStorage.setItem("addressData", JSON.stringify(addressData));
@@ -31,7 +28,6 @@ function EditModal(){
   }
   
   useEffect(() => {
-    console.log("rodei");
     fetchDataById(patientId);
   },[]);
 

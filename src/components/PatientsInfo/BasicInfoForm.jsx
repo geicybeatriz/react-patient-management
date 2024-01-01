@@ -12,7 +12,6 @@ function BasicInfoForm(){
 
   const handlePatientInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value)
     setPatientData((prevData) => ({
       ...prevData,
       [name]: value,

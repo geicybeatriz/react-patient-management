@@ -16,7 +16,6 @@ function ContactInfoForm(){
 
   const handlePatientInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value)
     setPatientData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -25,7 +24,6 @@ function ContactInfoForm(){
 
   const handleAddressInputChange = (e) => {
     const {name, value} = e.target;
-    console.log(name, value);
     setAddressData((prevData) => ({
       ...prevData,
       [name]: value
@@ -36,7 +34,6 @@ function ContactInfoForm(){
     const promise = axios.get(`${VIACEP_URL}/${term}/json`);
     promise
       .then(res => {
-        console.log(res.data);
         setDataCep(res.data);
         setAddressData({...addressData, cep: res.data.cep, bairro: res.data.bairro, cidade: res.data.cidade, uf: res.data.uf, logradouro: res.data.logradouro, complemento: res.data.complemento});
       })
@@ -48,15 +45,16 @@ function ContactInfoForm(){
   function searchAndValidateCEP(e) {
     setValue(e.target.value);
     let cep = e.target.value.replace(/\D/g, '');
-    console.log(cep);
 
-    if ((cep.length >= 8) && cepRegex.test(cep)) {
-      fetchDataCep(cep);
-    } else if (cep !== '') {
-      Swal.fire({
-        icon: "error",
-        title: "Formato de CEP inválido.",
-      });
+    if(cep.length >= 8){
+      if (cepRegex.test(cep)){
+        fetchDataCep(cep);
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Formato de CEP inválido.",
+        });
+      }
     }
   }
 

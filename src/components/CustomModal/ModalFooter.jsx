@@ -34,7 +34,6 @@ function ModalFooter({id, onClose, selected, setSelected}){
 
   function handleSubmitData(e){
     e.preventDefault();
-    console.log(data);
     if(id) {
       saveEditData(id, data);
     }
@@ -46,7 +45,6 @@ function ModalFooter({id, onClose, selected, setSelected}){
     promise.then(res => {
       setPatientData({nome: '', apelido: '', email: '', telefone: '', nacionalidade: '', genero: '', dataNascimento: '',  cpf: '', rg: '', estadoCivil:'', observacoes:''})
       setAddressData({cep: '', logradouro: '', numero: '', cidade: '', uf: '', bairro: '', complemento: ''})
-      console.log(res.data);
       localStorage.removeItem('patientData');
       localStorage.removeItem('addressData');
       Swal.fire({
@@ -68,7 +66,6 @@ function ModalFooter({id, onClose, selected, setSelected}){
       setAddressData({cep: '', logradouro: '', numero: '', cidade: '', uf: '', bairro: '', complemento: ''})
       localStorage.removeItem('patientData');
       localStorage.removeItem('addressData');
-      console.log(res.data);
       Swal.fire({
         icon: "success", title: "Os dados do paciente foram atualizados!"
       });
