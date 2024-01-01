@@ -13,7 +13,7 @@ function PatientsListHeader(){
       </Content>
       <FixedContainer>
         <SearchBar />
-        <ContainerButton onClick={() => openAddModal(true)}>
+        <ContainerButton onClick={openAddModal}>
           <Button 
             width="157px"
             typeButton="add-patients"

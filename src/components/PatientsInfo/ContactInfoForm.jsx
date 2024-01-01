@@ -50,7 +50,7 @@ function ContactInfoForm(){
     let cep = e.target.value.replace(/\D/g, '');
     console.log(cep);
 
-    if (cep !== '' && cepRegex.test(cep)) {
+    if ((cep.length >= 8) && cepRegex.test(cep)) {
       fetchDataCep(cep);
     } else if (cep !== '') {
       Swal.fire({
