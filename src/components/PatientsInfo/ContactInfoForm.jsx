@@ -38,7 +38,7 @@ function ContactInfoForm(){
       .then(res => {
         console.log(res.data);
         setDataCep(res.data);
-        setAddressData({...addressData, cep: res.data.cep})
+        setAddressData({...addressData, cep: res.data.cep, bairro: res.data.bairro, cidade: res.data.cidade, uf: res.data.uf, logradouro: res.data.logradouro, complemento: res.data.complemento});
       })
       .catch(err => Swal.fire({
         icon: 'error', title:'O CEP é inválido!' 
