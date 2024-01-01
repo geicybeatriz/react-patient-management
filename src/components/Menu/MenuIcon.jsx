@@ -12,8 +12,6 @@ function MenuIcon({id}) {
     setMenuOpen(!isMenuOpen)
     if(isMenuOpen === true) {
       setPatientId(id);
-    } else {
-      setPatientId(null)
     }
   }
 
