@@ -8,9 +8,17 @@ import Button from "../UI/Button/Button";
 function ModalFooter({id, onClose, selected, setSelected}){
   const {patientData, addressData} = useContext(PatientContext);
 
+  const newPatient = {...patientData};
+  delete newPatient.id;
+
+  const newAddress = {...addressData};
+  delete newAddress.id;
+  delete newAddress.patientId;
+
+  const data = {newPatient, newAddress}
+
   function handleSubmitData(e){
     e.preventDefault();
-    const data = {patientData, addressData}
     console.log(data);
     if(id) {
       saveEditData(id, data);
