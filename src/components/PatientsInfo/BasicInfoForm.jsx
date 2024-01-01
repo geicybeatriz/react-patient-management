@@ -19,8 +19,6 @@ function BasicInfoForm(){
     }));
   };
 
-  console.log(patientData);
-
   return (
     <Container>
       <ContainerPicture>

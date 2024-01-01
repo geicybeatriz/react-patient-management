@@ -6,7 +6,7 @@ import patientsServices from "../../services/patientsServices";
 import Button from "../UI/Button/Button";
 
 function ModalFooter({id, onClose, selected, setSelected}){
-  const {patientData, addressData} = useContext(PatientContext);
+  const {patientData, setPatientData, setAddressData, addressData} = useContext(PatientContext);
 
   const data = {
     patientData: {
@@ -44,6 +44,8 @@ function ModalFooter({id, onClose, selected, setSelected}){
   function saveEditData(id, data){
     const promise = patientsServices.editPatientData(id, data);
     promise.then(res => {
+      setPatientData({nome: '', apelido: '', email: '', telefone: '', nacionalidade: '', genero: '', dataNascimento: '',  cpf: '', rg: '', estadoCivil:'', observacoes:''})
+      setAddressData({cep: '', logradouro: '', numero: '', cidade: '', uf: '', bairro: '', complemento: ''})
       console.log(res.data);
       localStorage.removeItem('patientData');
       localStorage.removeItem('addressData');

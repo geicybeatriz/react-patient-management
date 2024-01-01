@@ -15,8 +15,10 @@ function EditModal(){
   const {patientData, setPatientData, addressData, setAddressData} = useContext(PatientContext);
 
   function fetchDataById(id){
+    if(!id) console.log(id);
     console.log("rodei");
     const promise = patientsServices.getPatientDataById(id);
+    console.log(id);
     promise.then(res => {
       console.log(res.data);
       setPatientData(res.data.patient);
