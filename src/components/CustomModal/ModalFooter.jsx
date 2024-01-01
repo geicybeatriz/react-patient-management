@@ -64,6 +64,8 @@ function ModalFooter({id, onClose, selected, setSelected}){
   function addNewPatient(data){
     const promise = patientsServices.addNewPatientData(data);
     promise.then(res => {
+      setPatientData({nome: '', apelido: '', email: '', telefone: '', nacionalidade: '', genero: '', dataNascimento: '',  cpf: '', rg: '', estadoCivil:'', observacoes:''})
+      setAddressData({cep: '', logradouro: '', numero: '', cidade: '', uf: '', bairro: '', complemento: ''})
       localStorage.removeItem('patientData');
       localStorage.removeItem('addressData');
       console.log(res.data);

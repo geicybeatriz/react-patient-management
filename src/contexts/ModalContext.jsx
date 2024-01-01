@@ -26,6 +26,7 @@ const ModalProvider = ({children}) => {
   return (
     <ModalContext.Provider value={{
       patientId, 
+      setPatientId,
       editModalOpen,
       openEditModal,
       closeEditModal,
