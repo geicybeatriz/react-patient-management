@@ -9,6 +9,7 @@ import ModalHeader from "./ModalHeader";
 function AddModal (){
   const [selected, setSelected] = useState("tabInfo");
   const {addModalOpen, closeAddModal} = useModal();
+  console.log(addModalOpen);
 
   return (
     <OverlayModal>
