@@ -8,14 +8,29 @@ import Button from "../UI/Button/Button";
 function ModalFooter({id, onClose, selected, setSelected}){
   const {patientData, addressData} = useContext(PatientContext);
 
-  const newPatient = {...patientData};
-  delete newPatient.id;
-
-  const newAddress = {...addressData};
-  delete newAddress.id;
-  delete newAddress.patientId;
-
-  const data = {newPatient, newAddress}
+  const data = {
+    patientData: {
+      nome: patientData.nome,
+      apelido: patientData.apelido,
+      email: patientData.email,
+      telefone: patientData.telefone,
+      nacionalidade: patientData.nacionalidade,
+      genero: patientData.genero,
+      dataNascimento: patientData.dataNascimento,
+      cpf: patientData.cpf,
+      rg: patientData.rg,
+      estadoCivil: patientData.estadoCivil,
+      observacoes: patientData.observacoes
+    },
+    addressData: {
+      cep: addressData.cep,
+      logradouro: addressData.logradouro,
+      numero: addressData.numero,
+      cidade: addressData.cidade,
+      uf: addressData.uf,
+      bairro: addressData.bairro,
+      complemento:addressData.complemento
+  }};
 
   function handleSubmitData(e){
     e.preventDefault();
