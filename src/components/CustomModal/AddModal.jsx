@@ -12,8 +12,8 @@ function AddModal (){
   console.log(addModalOpen);
 
   return (
-    <OverlayModal>
-      <ContainerModal isOpen={addModalOpen} onRequestClose={closeAddModal}>
+    <OverlayModal isOpen={addModalOpen} onRequestClose={closeAddModal}>
+      <ContainerModal >
         <Container>
           <ModalHeader selected={selected} setSelected={setSelected}/>
           <ModalContent>
