@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import Swal from "sweetalert2";
 import { PatientContext } from "../../contexts/PatientContext";
@@ -28,10 +28,10 @@ function EditModal(){
     }));
   }
   
-  if(patientId){
+  useEffect(() => {
     console.log("rodei");
     fetchDataById(patientId);
-  }
+  },[]);
 
   return (
     <OverlayModal isOpen={editModalOpen} onRequestClose={closeEditModal}>
